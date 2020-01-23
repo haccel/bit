@@ -217,7 +217,7 @@ class TestPrivateKey:
         print("scriptcode",private_key.scriptcode)
         assert private_key.address == BITCOIN_ADDRESS
         assert private_key.segwit_address is None
-        signature = base_key.sign(FINAL_TX_1)
+        signature = base_key.sign(FINAL_TX_1.encode())
         print("signature",signature)
 
     def test_segwit_address(self):
