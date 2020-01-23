@@ -732,9 +732,9 @@ def sign_tx(private_key, tx, *, unspents):
                      )
 
             print(f"1)script:_sig:{script_sig} witness:{witness}")
+            print(f"signature {signature}")
             script_sig = script_sig if segwit_input else witness
             witness = witness if segwit_input else b'\x00' if segwit_tx else b''
-            print(f"2)script:_sig:{script_sig} witness:{witness}")
 
         # Providing the signature(s) to the input
         tx.TxIn[i].script_sig = script_sig
