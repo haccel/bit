@@ -665,7 +665,9 @@ def sign_tx(private_key, tx, *, unspents):
 
     # Calculate signature scripts:
     for hash, (i, _, segwit_input) in zip(preimages, inputs_parameters):
+        print(f"hash {hash}")
         signature = private_key.sign(hash) + b'\x01'
+        print(f"signature {signature}")
 
         # ------------------------------------------------------------------
         if (private_key.instance == 'MultiSig' or
@@ -732,7 +734,6 @@ def sign_tx(private_key, tx, *, unspents):
                      )
 
             print(f"1)script:_sig:{script_sig} witness:{witness}")
-            print(f"signature {signature}")
             script_sig = script_sig if segwit_input else witness
             witness = witness if segwit_input else b'\x00' if segwit_tx else b''
 
