@@ -190,7 +190,6 @@ class TestBaseKey:
     def test_equal(self):
         assert BaseKey(WALLET_FORMAT_COMPRESSED_MAIN) == BaseKey(WALLET_FORMAT_COMPRESSED_MAIN)
 
-
 class TestPrivateKey:
     def test_alias(self):
         assert Key == PrivateKey
@@ -203,8 +202,11 @@ class TestPrivateKey:
         assert private_key.unspents == []
         assert private_key.transactions == []
 
+    @pytest.mark.prv
     def test_address(self):
         private_key = PrivateKey(WALLET_FORMAT_MAIN)
+        print("segwit_scriptcode",private_key.segwit_scriptcode)
+        print("scriptcode",private_key.scriptcode)
         assert private_key.address == BITCOIN_ADDRESS
         assert private_key.segwit_address is None
 
